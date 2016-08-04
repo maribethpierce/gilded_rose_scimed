@@ -101,11 +101,7 @@ class ConjuredItem < Item
 
   def update_quality
     self.sell_in -= 1
-    if self.quality >= 2
-      self.quality -= 2
-    else
-      self.quality = 0
-    end
+    self.quality >= 2 ? self.quality -= 2 : self.quality = 0
   end
 
 end
