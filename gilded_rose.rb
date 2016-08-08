@@ -28,19 +28,15 @@ class Item
 
   def update_quality
     if self.quality >= 2
-      sell_in > 0 ? decrement_1 : decrement_2
+      sell_in > 0 ? decrement(1) : decrement(2)
     else
       self.quality = 0
     end
     upper_limit
   end
 
-  def decrement_1
-    self.quality -= 1
-  end
-
-  def decrement_2
-    self.quality -= 2
+  def decrement(n)
+    self.quality -= n
   end
 
   def upper_limit
@@ -75,24 +71,16 @@ class BackstagePasses < Item
 
   def increment
     if self.sell_in < 6
-      increment_3
+      increment_item(3)
     elsif self.sell_in < 11
-      increment_2
+      increment_item(2)
     else
-      increment_1
+      increment_item(1)
     end
   end
 
-  def increment_1
-    self.quality += 1
-  end
-
-  def increment_2
-    self.quality += 2
-  end
-
-  def increment_3
-    self.quality += 3
+  def increment_item(n)
+    self.quality += n
   end
 
 end
